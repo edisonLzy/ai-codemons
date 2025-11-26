@@ -95,21 +95,7 @@ function UserCard({ user, isActive }) {
 
 ### 步骤 3: Classname 分组重构
 
-1. **安装/确认工具库**：
-
-   如果项目中没有类名工具库，建议安装：
-   ```bash
-   # npm
-   npm install clsx
-   
-   # pnpm
-   pnpm add clsx
-   
-   # yarn
-   yarn add clsx
-   ```
-
-2. **按功能分组类名**：
+1. **按功能分组类名**：
 
    将类名按以下功能范围分组：
    
@@ -121,7 +107,7 @@ function UserCard({ user, isActive }) {
    - **响应式**：断点相关的类
    - **动画过渡**：transition、animation 相关
 
-3. **条件类名处理**：
+2. **条件类名处理**：
    - 识别基于 props 或 state 的条件类名
    - 使用 `clsx` 或类似库处理条件逻辑
 
@@ -292,12 +278,7 @@ function UserCard({ user, isActive }) {
 
 ## 重构方案
 
-### 1. 安装依赖
-```bash
-pnpm add clsx
-```
-
-### 2. 重构后代码
+### 重构后代码
 ```jsx
 import clsx from 'clsx';
 
