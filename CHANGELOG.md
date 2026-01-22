@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0] - 2026-01-22
+
+### Features
+
+- add NoteBeam MCP server module (16247b3)
+- add save-to-feishu prompt to feishu-mcp (2f23533)
+
+### Bug Fixes
+
+- remove auto-generated date field and use template for table URL (51f2f46)
+
 ## [0.6.0] - 2025-11-11
 
 ### Features
