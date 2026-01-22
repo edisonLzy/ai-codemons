@@ -35,7 +35,13 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
-          
+
+      - name: Configure Git authentication
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -53,12 +59,7 @@ jobs:
         
       - name: Run lint
         run: pnpm lint
-        
-      - name: Setup Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+
       - name: Install release script dependencies
         run: |
           cd scripts
