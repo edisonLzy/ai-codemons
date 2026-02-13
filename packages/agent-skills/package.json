@@ -1,0 +1,30 @@
+{
+  "name": "@codemons/agent-skills",
+  "version": "0.1.0",
+  "description": "Agent Skills",
+  "license": "MIT",
+  "author": "MCP Servers Team",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch --sourcemap"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.25",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
