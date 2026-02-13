@@ -14,6 +14,9 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 export default [
   includeIgnoreFile(gitignorePath),
   {
+    ignores: ['**/dist/**', '**/node_modules/**'],
+  },
+  {
     rules: {
       ...js.configs.recommended.rules,
       'object-shorthand': ['error', 'always'],

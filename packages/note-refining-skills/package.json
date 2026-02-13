@@ -1,0 +1,26 @@
+{
+  "name": "@codemons/note-refining-skills",
+  "version": "0.1.0",
+  "description": "Agent Skill for refining and improving notes",
+  "license": "MIT",
+  "author": "MCP Servers Team",
+  "type": "module",
+  "files": [
+    "SKILL.md",
+    "references",
+    "scripts",
+    "store"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.17.25",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
