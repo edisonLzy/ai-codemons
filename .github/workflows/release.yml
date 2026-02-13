@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -82,7 +82,7 @@ jobs:
 
       - name: Push changes and tags
         if: steps.changesets.outputs.has_changesets == 'true'
-        run: git push origin main --follow-tags
+        run: git push origin master --follow-tags
 
       - name: Summary
         if: steps.changesets.outputs.has_changesets == 'true'

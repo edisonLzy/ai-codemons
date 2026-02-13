@@ -35,6 +35,9 @@
 
 Agent 技能扩展包，为 AI Agent 提供可复用的能力模块（开发中）。
 
+> [!TIP]
+> 推荐使用 [vercel-labs/skills](https://github.com/vercel-labs/skills) 来管理 Skills。它提供了标准化的 Skill 定义、发布和分发流程，可以更方便地组织和复用 AI Agent 的能力模块。
+
 ## 🚀 快速开始
 
 ### 系统要求
