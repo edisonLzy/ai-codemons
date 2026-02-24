@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- d0712ab: update feishu summary daily note workflow
+
 ## [0.7.0] - 2026-01-22
 
 ### Features
@@ -52,7 +58,7 @@
 
 - **feishu-mcp**: 新增画板节点管理工具 (52308cb)
 - add mcp config (e97d78b)
-- **scripts**: 在CI环境下通过 NODE_AUTH_TOKEN 跳过 npm 登录检查 (428b7f1)
+- **scripts**: 在 CI 环境下通过 NODE_AUTH_TOKEN 跳过 npm 登录检查 (428b7f1)
 
 ## [0.1.2] - 2025-08-28
 
@@ -71,7 +77,7 @@
 - 添加统一日志系统和配置管理，优化运行架构 (e97366f)
 - **feishu-mcp**: update entry path and add command configuration (25d15a0)
 - **docx**: make block_id optional in createDocumentBlocks (1cd50bf)
-- **feishu**: todo 统一移除消息处理. createDocumentBlocksSchema block_id参数调整 (ee607b7)
+- **feishu**: todo 统一移除消息处理. createDocumentBlocksSchema block_id 参数调整 (ee607b7)
 - 添加飞书多维表格和 Wiki 节点信息工具 (3d83864)
 - **feishu-mcp**: 添加 Wiki 文档搜索功能 (b9a9f3b)
 - **prompts**: add Git Commit Workflow prompt and documentation (fe0347f)
@@ -82,7 +88,7 @@
 - **wiki**: WIP create document blocks (f2f6438)
 - **wiki**: create docx (d899a97)
 - **wiki**: 新增获取文档节点内容的工具 (e525550)
-- **wiki**: 调整 createNode tools参数 (7674222)
+- **wiki**: 调整 createNode tools 参数 (7674222)
 - remove unused mcp (5d9f165)
 - enhance gh-code-review workflow to output MR URL and overview (aca3b5c)
 - enhance gh-code-review prompt with dynamic workflow path resolution (fe5b3e5)
@@ -102,7 +108,7 @@
 - **feishu-mcp**: implement install command for MCP server configuration (18c9d91)
 - **feishu-mcp**: add whoami command to display current user information (332f258)
 - **feishu**: add feishu mcp (364e2f6)
-- 调整prompt (4ef4557)
+- 调整 prompt (4ef4557)
 - rename cli -> core (5a66e39)
 - **WIP**: add cli pkg (04124a4)
 - 添加 mcp-server cursor rule (85b1585)
@@ -117,8 +123,7 @@
 ### Bug Fixes
 
 - **release**: specify npm registry in authentication check (0c8eff2)
-- **feishu-mcp**: listSpaces改为content\n\n- listSpaces返回调整为content文本，符合MCP工具输出\n- 将CallToolResult导入从sdk/types改为sdk/types.d.ts修复类型问题 (1580621)
+- **feishu-mcp**: listSpaces 改为 content\n\n- listSpaces 返回调整为 content 文本，符合 MCP 工具输出\n- 将 CallToolResult 导入从 sdk/types 改为 sdk/types.d.ts 修复类型问题 (1580621)
 - resolve ESLint issues across MCP servers (aba5f0a)
 - **feishu-mcp**: 修复 install.ts 文件中的配置项命名错误 (9cd2084)
 - update server tool registration method and correct import path for runAction (bab0266)
-
