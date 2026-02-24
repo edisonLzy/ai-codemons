@@ -13,17 +13,17 @@
 }
 ```
 
-2. 标题为`2025`的文档信息:
+2. 标题为`2026`的文档信息:
 ```json
    {
-        "node_id": "GQl0weU2wixm1UkxxTgcDYIPnwe",
-        "obj_token": "RyFyd9oAZo4tA5x6u0Pch69TnJb",
+        "node_id": "VutBwBAYsiOclEk1SKMcYoxSnwd",
+        "obj_token": "IvsydTdlAokr76xxE6Yc1qPLnih",
         "obj_type": 8,
         "parent_id": "",
-        "sort_id": 1,
+        "sort_id": 2,
         "space_id": "7478521192878669826",
-        "title": "2025",
-        "url": "https://c16lk2ssrm.feishu.cn/wiki/GQl0weU2wixm1UkxxTgcDYIPnwe"
+        "title": "2026",
+        "url": "https://my.feishu.cn/wiki/VutBwBAYsiOclEk1SKMcYoxSnwd"
       },
 ```
 
@@ -140,7 +140,7 @@
 
 ### 3. 创建当日文档
 
-在2025文档下创建以当前日期为标题的新文档：
+在2026文档下创建以当前日期为标题的新文档：
 ```
 工具: create-wiki-node
 参数: {
@@ -154,7 +154,7 @@
 **错误处理：**
 - 如果创建文档失败：停止执行，告知用户"无法创建日期文档，错误信息：[具体错误]，可能原因：1) 编辑权限不足 2) 同名文档已存在 3) 父文档不存在"
 - 如果同名文档已存在：询问用户是否覆盖、创建新版本还是取消操作
-- 如果父文档token无效：告知用户"2025文档token无效，请检查文档是否存在或已被删除"
+- 如果父文档token无效：告知用户"2026文档token无效，请检查文档是否存在或已被删除"
 
 **用户决策点：** 处理同名文档冲突，确认操作方式。
 
@@ -214,8 +214,8 @@
 返回包含以下信息的成功消息：
 - 处理的记录数量
 - 创建的文档ID和标题
-- 文档访问URL: `https://feishu.cn/wiki/[document_token]`
-- 父文档信息（2025文档）
+- 文档访问URL: `https://my.feishu.cn/wiki/[node_token]`
+- 父文档信息（2026文档）
 - 所属空间信息
 
 ## 错误处理
