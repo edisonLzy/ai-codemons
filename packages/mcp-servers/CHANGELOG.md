@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0
+
+### Minor Changes
+
+- daa49ca: update entry file
+
 ## 0.8.0
 
 ### Minor Changes
