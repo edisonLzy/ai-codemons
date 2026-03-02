@@ -5,16 +5,20 @@ on:
     branches: [master]
   workflow_dispatch:
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
 
     # Skip if commit message contains [skip ci] or [skip release]
-    if: ${{ !contains(github.event.head_commit.message, '[skip release]') && !contains(github.event.head_commit.message, '[skip ci]') }}
+    if: ${{ github.event_name != 'push' || (!contains(github.event.head_commit.message, '[skip release]') && !contains(github.event.head_commit.message, '[skip ci]')) }}
 
     permissions:
       contents: write
-      packages: write
+      issues: write
       pull-requests: write
 
     steps:
@@ -22,7 +26,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Configure Git
         run: |
@@ -33,6 +36,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
       - name: Setup pnpm
@@ -50,42 +54,20 @@ jobs:
       - name: Build all packages
         run: pnpm build
 
-      # Changeset 发布流程
-      - name: Check for changesets
+      - name: Create release PR or publish
         id: changesets
-        run: |
-          CHANGESET_FILES=$(find .changeset -name "*.md" ! -name "README.md" 2>/dev/null | wc -l | tr -d ' ')
-          echo "count=$CHANGESET_FILES" >> $GITHUB_OUTPUT
-          if [[ "$CHANGESET_FILES" -gt 0 ]]; then
-            echo "has_changesets=true" >> $GITHUB_OUTPUT
-            echo "发现 $CHANGESET_FILES 个 changeset 文件"
-          else
-            echo "has_changesets=false" >> $GITHUB_OUTPUT
-            echo "没有待发布的 changesets，跳过发布"
-          fi
-
-      - name: Version packages
-        if: steps.changesets.outputs.has_changesets == 'true'
-        run: pnpm changeset version
-
-      - name: Commit version updates
-        if: steps.changesets.outputs.has_changesets == 'true'
-        run: |
-          git add -A
-          git commit -m "chore(release): version packages [skip ci]" || echo "没有需要提交的更改"
-
-      - name: Publish to npm
-        if: steps.changesets.outputs.has_changesets == 'true'
-        run: pnpm changeset publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          publish: pnpm changeset publish
+          commit: 'chore(release): version packages [skip ci]'
+          title: 'chore(release): version packages'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Push changes and tags
-        if: steps.changesets.outputs.has_changesets == 'true'
-        run: git push origin master --follow-tags
-
       - name: Summary
-        if: steps.changesets.outputs.has_changesets == 'true'
+        if: steps.changesets.outputs.published == 'true'
         run: |
           echo "## Release Summary" >> $GITHUB_STEP_SUMMARY
           echo "✅ Changeset release completed" >> $GITHUB_STEP_SUMMARY
