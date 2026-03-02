@@ -13,7 +13,6 @@
 | **[Feishu MCP](#-feishu-mcp)** | 飞书/Lark 集成服务器 | Wiki 管理、文档操作、多维表格、画板、Prompts | 🔐 OAuth |
 | **[Figma MCP](#-figma-mcp)** | Figma 设计工具集成 | 文件管理、节点查询、团队协作 | 🔐 Token |
 | **[Prompts MCP](#-prompts-mcp)** | Git/GitHub 工作流提示 | 代码审查、MR 创建、Commit 规范 | ✅ 无需认证 |
-| **[XLSX MCP](#-xlsx-mcp)** | Excel 文件读取工具 | 表格查询、数据筛选、合并单元格处理 | ✅ 无需认证 |
 
 ## ✨ 特性
 
@@ -155,50 +154,6 @@ codemons-mcp figma-mcp
 codemons-mcp prompts-mcp
 ```
 
-### 📊 XLSX MCP
-
-Excel 文件读取和查询工具，支持复杂的合并单元格处理和 SQL 风格的数据筛选。
-
-**主要功能:**
-- **表格读取**: 读取指定工作表的数据
-- **合并单元格**: 自动处理和识别合并单元格
-- **条件查询**: 支持 SQL 风格的 WHERE 条件筛选
-- **数据提取**: 灵活的列选择和数据过滤
-- **错误处理**: 详细的错误信息和验证
-
-**可用工具:**
-- `list-sheet-from-file`: 获取 Excel 文件中的所有工作表名称
-- `get-records-from-sheet`: 根据条件查询工作表中的记录
-
-**查询示例:**
-```typescript
-// 列出所有工作表
-{
-  "filePath": "/absolute/path/to/file.xlsx"
-}
-
-// 查询所有记录
-{
-  "filePath": "/absolute/path/to/file.xlsx",
-  "sheetName": "数据表"
-}
-
-// 条件查询
-{
-  "filePath": "/absolute/path/to/file.xlsx",
-  "sheetName": "数据表",
-  "conditions": ["状态 = 完成", "优先级 = P0"]
-}
-```
-
-**使用方法:**
-```bash
-# 直接运行（无需认证）
-codemons-mcp xlsx-mcp
-```
-
-**[查看详细文档 →](./src/mcp-servers/xlsx-mcp/README.md)**
-
 ## 🛠️ 开发指南
 
 ### 项目结构
@@ -216,7 +171,6 @@ mcp-servers/
 │   │   ├── feishu-mcp/        # 飞书集成
 │   │   ├── figma-mcp/         # Figma 集成
 │   │   ├── prompts-mcp/       # Git/GitHub 提示
-│   │   ├── xlsx-mcp/          # Excel 读取
 │   │   └── index.ts           # 服务器注册和加载
 │   ├── types.ts               # 类型定义
 │   └── config-store.ts        # 配置管理
@@ -262,7 +216,6 @@ pnpm dev:cli auth figma-mcp
 pnpm dev:cli feishu-mcp
 pnpm dev:cli figma-mcp
 pnpm dev:cli prompts-mcp
-pnpm dev:cli xlsx-mcp
 
 # 使用 MCP Inspector 调试
 pnpm dev:cli inspector feishu-mcp
@@ -343,7 +296,6 @@ export default exampleMCPServer;
   - axios - HTTP 客户端
   - inquirer - 交互式命令行
   - zod - Schema 验证
-  - xlsx - Excel 文件处理
   - dotenv - 环境变量管理
 
 ## 🔧 支持的 MCP 客户端
@@ -378,11 +330,6 @@ export default exampleMCPServer;
       "args": ["prompts-mcp"],
       "type": "stdio"
     },
-    "xlsx": {
-      "command": "codemons-mcp",
-      "args": ["xlsx-mcp"],
-      "type": "stdio"
-    }
   }
 }
 ```
@@ -408,10 +355,6 @@ export default exampleMCPServer;
       "command": "codemons-mcp",
       "args": ["prompts-mcp"]
     },
-    "xlsx": {
-      "command": "codemons-mcp",
-      "args": ["xlsx-mcp"]
-    }
   }
 }
 ```
@@ -463,7 +406,7 @@ ci: CI/CD 配置变更
 **示例:**
 ```bash
 feat(feishu-mcp): 添加多维表格搜索功能
-fix(xlsx-mcp): 修复合并单元格解析错误
+fix(mcp-server): 修复服务解析错误
 docs: 更新 README 安装说明
 ```
 

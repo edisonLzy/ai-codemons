@@ -44,7 +44,6 @@ packages/
 │   │   │   ├── feishu-mcp/  # Feishu/Lark integration
 │   │   │   ├── figma-mcp/   # Figma design tools
 │   │   │   ├── prompts-mcp/ # Git/GitHub workflow prompts
-│   │   │   ├── xlsx-mcp/    # Excel file processing
 │   │   │   └── note-beam-mcp/ # NoteBeam integration
 │   │   └── types.ts         # Shared TypeScript interfaces
 │   └── tsup.config.ts       # Build configuration
@@ -118,7 +117,7 @@ interface MCPServerOptions {
 - **OAuth Flow**: Feishu MCP uses complete OAuth with token refresh
 - **Token-based**: Figma MCP uses simple API token authentication
 - **Config Storage**: Use dedicated config stores for credential management
-- **No Auth**: Prompts MCP and XLSX MCP require no authentication
+- **No Auth**: Prompts MCP requires no authentication
 
 ## Testing Strategy
 
@@ -167,11 +166,6 @@ interface MCPServerOptions {
 - **Purpose**: Git/GitHub workflow automation
 - **Auth**: None required
 - **Key Features**: Code review prompts, MR creation, commit workflows
-
-### xlsx-mcp
-- **Purpose**: Excel file processing
-- **Auth**: None required
-- **Key Features**: Conditional queries, merged cell handling
 
 ### note-beam-mcp
 - **Purpose**: NoteBeam highlights integration

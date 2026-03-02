@@ -9,7 +9,6 @@
 | `feishu-mcp` | 飞书/Lark 集成 | 是 |
 | `figma-mcp` | Figma 设计工具集成 | 是 |
 | `prompts-mcp` | Git/GitHub 工作流提示 | 否 |
-| `xlsx-mcp` | Excel 文件读取工具 | 否 |
 | `note-beam-mcp` | NoteBeam 高亮和笔记集成 | 是 |
 
 ## 使用方式
@@ -38,11 +37,6 @@
     "prompts": {
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "prompts-mcp"],
-      "type": "stdio"
-    },
-    "xlsx": {
-      "command": "npx",
-      "args": ["-y", "@codemons/mcp-servers", "xlsx-mcp"],
       "type": "stdio"
     },
     "note-beam": {
@@ -80,10 +74,6 @@
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "prompts-mcp"]
     },
-    "xlsx": {
-      "command": "npx",
-      "args": ["-y", "@codemons/mcp-servers", "xlsx-mcp"]
-    },
     "note-beam": {
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "note-beam-mcp"],
@@ -116,10 +106,6 @@
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "prompts-mcp"]
     },
-    "xlsx": {
-      "command": "npx",
-      "args": ["-y", "@codemons/mcp-servers", "xlsx-mcp"]
-    },
     "note-beam": {
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "note-beam-mcp"],
@@ -151,10 +137,6 @@
     "prompts": {
       "command": "npx",
       "args": ["-y", "@codemons/mcp-servers", "prompts-mcp"]
-    },
-    "xlsx": {
-      "command": "npx",
-      "args": ["-y", "@codemons/mcp-servers", "xlsx-mcp"]
     },
     "note-beam": {
       "command": "npx",
@@ -223,7 +205,7 @@ npx -y @codemons/mcp-servers auth figma-mcp
 }
 ```
 
-### prompts-mcp 和 xlsx-mcp
+### prompts-mcp
 
 无需认证，直接使用即可。
 
@@ -240,9 +222,6 @@ npx -y @codemons/mcp-servers auth figma-mcp
 
 ### prompts-mcp
 - Git/GitHub 工作流提示（无需实际工具调用）
-
-### xlsx-mcp
-- `list-sheet-from-file`, `get-records-from-sheet`
 
 ### note-beam-mcp
 - `list-highlights`
@@ -261,7 +240,6 @@ npx -y @codemons/mcp-servers auth figma-mcp
 npx -y @codemons/mcp-servers feishu-mcp
 npx -y @codemons/mcp-servers figma-mcp
 npx -y @codemons/mcp-servers prompts-mcp
-npx -y @codemons/mcp-servers xlsx-mcp
 npx -y @codemons/mcp-servers note-beam-mcp
 
 # 调试模式

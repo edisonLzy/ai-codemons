@@ -14,7 +14,7 @@
 
 | 包 | 版本 | 描述 |
 |----|------|------|
-| [@codemons/mcp-servers](./packages/mcp-servers/) | `0.7.0` | 统一的 MCP 服务器 CLI 工具，集成飞书、Figma、Git 工作流、Excel 等服务 |
+| [@codemons/mcp-servers](./packages/mcp-servers/) | `0.7.0` | 统一的 MCP 服务器 CLI 工具，集成飞书、Figma、Git 工作流等服务 |
 | [@codemons/agent-skills](./packages/agent-skills/) | `0.1.0` | Agent 技能扩展包 |
 
 ### 🚀 MCP Servers
@@ -26,7 +26,6 @@
 | **Feishu MCP** | 飞书/Lark 集成 — Wiki、文档、多维表格、画板 | 🔐 OAuth |
 | **Figma MCP** | Figma 设计工具 — 文件管理、节点查询、团队协作 | 🔐 Token |
 | **Prompts MCP** | Git/GitHub 工作流提示 — 代码审查、MR 创建、Commit 规范 | ✅ 无需认证 |
-| **XLSX MCP** | Excel 文件读取 — 条件查询、合并单元格处理 | ✅ 无需认证 |
 | **NoteBeam MCP** | NoteBeam 高亮和笔记集成 | 🔐 Token |
 
 👉 查看 [MCP Servers 完整文档](./packages/mcp-servers/README.md) 了解详情。
