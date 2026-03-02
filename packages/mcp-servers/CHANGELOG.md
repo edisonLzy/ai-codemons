@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1
+
+### Patch Changes
+
+- c7240f5: test release workflow path with pending publish content
+
 ## 0.10.0
 
 ### Minor Changes
