@@ -1,25 +1,35 @@
 ---
-name: 构建思维框架
-description: 这是一个用于构建和完善用户思维框架的 Skill，帮助用户结构化地思考问题并提炼核心逻辑。
+name: thinking-framework-skills
+description: 基于 Obsidian 知识树框架，按路由分发到“创建主题节点”与“在指定主题创建果实”两个子技能。
 ---
 
-# 🦸‍♂️ 构建思维框架 (thinking-framework-skills)
+# Thinking Framework Skills Router
 
-## 🌟 说明 (Description)
-这是一个用于构建和完善用户思维框架的 Skill，帮助用户结构化地思考问题并提炼核心逻辑。
+## 概述
 
-## 🎯 目标 (Objectives)
-- 帮助用户理清思路
-- 构建系统化的心智模型
-- 将散乱的信息结构化
-- 提炼核心逻辑和概念
+该技能用于维护基于 Obsidian 的知识树结构。每个主题目录都是一个节点，标准结构包含：
+- `README.md`：节点入口（定义、边界、子主题索引）
+- `FAQ.md`：碎片经验池（反常识、踩坑、短问题）
 
-## 🛠 功能 (Features)
-- 分析复杂信息并建立概念之间的联系
-- 通过图表等形式构建心智框架
-- 输出结构化的分析报告
+当内容形成完整体系时，才创建“果实”`*.md` 文件。
 
-## 📁 目录结构 (Directory Structure)
-- `scripts/` - 包含可执行脚本
-- `references/` - 包含参考资料
-- `store/` - 包含技能的相关存储
+## 路由规则
+
+根据用户意图选择一个子技能执行：
+
+1. **创建 topic 的 subskill**
+   - 触发条件：用户要新增主题/子主题目录、初始化节点结构。
+   - 执行文档：`references/create-topic-subskill.md`
+
+2. **在指定 topic 创建果实的 subskill**
+   - 触发条件：用户已指定某个 topic，且要新增一个完整知识点文档（果实）。
+   - 执行文档：`references/create-fruit-in-topic-subskill.md`
+
+如果用户意图不明确，先提问澄清后再路由。
+
+## 全局约束
+
+- 严格遵循知识树最小结构：主题目录至少有 `README.md` + `FAQ.md`。
+- 不创建空壳果实：仅在内容足够完整时创建 `*.md`。
+- `README.md` 应包含一句话定义、目标边界、子主题索引（MOC）。
+- `FAQ.md` 用于沉淀细碎且未成体系内容，避免滥建文档。
