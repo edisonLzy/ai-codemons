@@ -17,11 +17,11 @@ description: 基于 Obsidian 知识树框架，按路由分发到“创建主题
 
 根据用户意图选择一个子技能执行：
 
-1. **创建 topic 的 subskill**
+1. **创建 topic 的 Subskill**
    - 触发条件：用户要新增主题/子主题目录、初始化节点结构。
    - 执行文档：`references/create-topic-subskill.md`
 
-2. **在指定 topic 创建果实的 subskill**
+2. **在指定 topic 创建果实的 Subskill**
    - 触发条件：用户已指定某个 topic，且要新增一个完整知识点文档（果实）。
    - 执行文档：`references/create-fruit-in-topic-subskill.md`
 
