@@ -1,56 +1,20 @@
-# FAQ 模板 (FAQ Template)
+# FAQ
 
-> **说明**：本模板用于规范项目中常见问题与解答（FAQ）的记录格式，帮助团队更好地沉淀知识和经验。添加新问题时，请复制底部的结构并在实际业务中填写。
+> This document records frequently asked questions about this topic.
 
-## 问题 [序号]：[一句话概括问题的核心疑问或标题]
+## Scope
 
-### 问题是什么？
-1. **说明问题是什么？**
-   [详细描述遇到的具体问题、报错信息或你的疑惑点]
+- Questions related to core concepts of this topic
+- Common misconceptions and best practices in practice
 
-2. **说明问题的上下文是什么？**
-   [描述问题发生的背景环境、前置条件，或者具体的业务/架构上下文信息]
+## Structure
 
-### 回答是什么？
-1. **涉及到的知识点是什么？**
-   - [列出理解或解决此问题所需的前置底层知识点 1]
-   - [列出知识点 2]
+Question X: [Question Title]
 
-   **相关代码（如有）：**
-   ```[代码语言，如 xml/java/typescript 等]
-   // 放置相关的核心代码片段或者配置片段
-   ```
+### What is the question?
+1. **What is the question?**
+2. **What is the context?**
 
-2. **答案是什么？**
-   [直接给出问题的正确结论、具体的解决方案、或背后的运行原理解释]
-
-   **核心价值**：[总结该结论/解决方案的核心意义、企业级最佳实践价值，或它能够帮你规避的潜在风险隐患]
-
----
-
-<!-- 复制以下空模板以新增问题 -->
-
-## 问题 X：[问题标题]
-
-### 问题是什么？
-1. **说明问题是什么？**
-   ...
-
-2. **说明问题的上下文是什么？**
-   ...
-
-### 回答是什么？
-1. **涉及到的知识点是什么？**
-   - ...
-
-   **相关代码：**
-   ```
-
-   ```
-
-2. **答案是什么？**
-   ...
-
-   **核心价值**：...
-
----
+### What is the answer?
+1. **What knowledge points are involved?**
+2. **What is the answer?**
