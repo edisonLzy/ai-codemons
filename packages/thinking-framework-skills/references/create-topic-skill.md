@@ -13,101 +13,16 @@ Create a new topic (or sub-topic) directory in the knowledge tree with basic nod
 
 ## Execution Steps
 
-### 1. Find Best Placement Directory (Iterative Traversal + User Confirmation)
+### 1. Find Best Placement Directory
 
-```mermaid
-flowchart TD
-    A[Start: Receive Parent Path] --> B[Read Root README.md]
-    B --> C[Scan Current Directory Subdirs]
-    C --> D{Match Found?}
-    D -->|Yes| E[Rank Candidates by Keyword Match]
-    D -->|No| F[Show as New Domain]
-    E --> G{More than 1 Candidate?}
-    G -->|Yes| H[Prompt User to Select]
-    G -->|No| I[Single Candidate - Propose to User]
-    H --> J{User Selection?}
-    J -->|Enter number| K[Move to Selected Directory]
-    J -->|n| L[Create New Directory]
-    I --> J
-    K --> C
-    L --> M[Confirm as Parent Directory]
-    F --> M
-    M --> N{User Confirms?}
-    N -->|Yes| O[Proceed to Duplicate Check]
-    N -->|No| C
-```
+Invoke the **[Retrieve Topic Node](./retrieval-topic-skill.md)** subskill to locate the most suitable parent directory in the knowledge tree.
 
-#### 1.1 Start from Vault Root
+- Use the new topic's name and definition as the search query.
+- The subskill handles vault traversal (up to 3 layers), keyword matching, candidate ranking, and user confirmation.
+- On success, it returns the confirmed parent directory path.
+- If no matching directory is found, the user may choose to place the new topic at the vault root or a manually specified path.
 
-Read the vault root's `README.md` (if exists) to understand the overall structure.
-
-#### 1.2 Match Current Directory
-
-Based on the topic's category/keywords, find suitable subdirectories by reading their `README.md` content:
-
-- Scan all subdirectories in current directory
-- For each subdirectory, read its `README.md` (if exists)
-- Match against topic keywords in the README content (title, definition, boundary)
-- Ranking rules:
-  - High: keyword appears in title or definition
-  - Medium: keyword appears in boundary/includes
-  - Low: keyword appears elsewhere in content
-  - No match: treat as new domain
-
-#### 1.3 Output All Directories (if uncertain)
-
-If unable to determine the appropriate parent directory (e.g., no subdirectories match), use the `tree` command to output the current vault directory structure:
-
-```bash
-tree -L 5 -d /path/to/vault
-```
-
-- `-L 5`: Show up to 5 levels of directories
-- `-d`: Show directories only, not files
-
-Example output:
-```
-vault/
-├── programming/
-│   ├── frontend/
-│   └── backend/
-├── design/
-│   └── ui/
-└── ...
-
-Please specify the parent directory path, or enter n to create a new directory at root:
-```
-
-#### 1.4 User Confirmation
-
-If there are multiple candidates or need to enter subdirectories, **pause and let user confirm**:
-
-```
-Current candidate directories:
-1. /vault/programming/frontend/ - keyword match: frontend
-2. /vault/programming/backend/ - keyword match: backend
-3. /vault/programming/ - root level
-
-Please select [1-3], or enter n to create new directory:
-```
-
-#### 1.5 Iterative Traversal
-
-Repeat steps 1.2-1.4 until user selects a directory as the final parent directory, or confirms a new directory needs to be created.
-
-### 2. User Confirms Directory
-
-Output the found parent directory path and ask if it meets expectations:
-
-```
-Final parent directory: [path]
-Confirm? [Y/n]
-```
-
-- If user enters `n`, return to step 1 to reselect
-- If user enters a specific path (e.g., `/vault/programming/frontend/React/`), use that path directly
-
-### 3. Check for Duplicates
+### 2. Check for Duplicates
 
 - List all subdirectories under the parent directory
 - Check if a directory with the same name already exists
@@ -125,7 +40,7 @@ Overwrite? [y/N]
 
 - If user chooses not to overwrite, end the process
 
-### 4. Create Directory Structure
+### 3. Create Directory Structure
 
 Create the following directory structure:
 
@@ -143,15 +58,29 @@ Use `resources/README-template.md` as the template. Only fill in content provide
 
 Use `resources/FAQ-template.md` as the template, copy the template content and add the scope description. Only include content provided by the user.
 
-#### 4.3 Optimize Formatting (IMPORTANT)
+#### 3.3 Optimize Formatting (IMPORTANT)
 
-**This step is REQUIRED.** Use the `/obsidian-markdown` skill to optimize the file content:
-- Normalize Markdown format
-- Optimize heading hierarchy
-- Adjust list styles
-- Add appropriate spacing and separators
+**This step is REQUIRED.** Invoke the `obsidian-markdown` skill to optimize both files after creation. Apply the following rules:
 
-### 5. Update Parent Directory README.md
+**README.md**
+
+| Element | Rule |
+|---|---|
+| Frontmatter | Add `aliases` field with common name variants (e.g., localized names) |
+| Includes boundary | Use `> [!success] Includes` callout instead of plain bold + list |
+| Excludes boundary | Use `> [!failure] Excludes` callout instead of plain bold + list |
+| Empty Sub-topic Index | Replace placeholder text with `> [!todo] 待完善` callout |
+
+**FAQ.md**
+
+| Element | Rule |
+|---|---|
+| Scope section | Use `> [!info] 收录范围` callout instead of plain list |
+| Each question block | Use `> [!faq]-` foldable callout (collapsed by default) |
+| Question / answer separator | Add `---` horizontal rule between question context and answer |
+| Section heading | Rename `## Structure` → `## Questions` |
+
+### 4. Update Parent Directory README.md
 
 After creating the directory, update the parent directory's `README.md` file to add sub-topic index:
 
@@ -166,11 +95,11 @@ After creating the directory, update the parent directory's `README.md` file to 
 
 If `## Sub-topic Index` section does not exist, create it.
 
-### 6. Recursively Create Sub-topics (if provided)
+### 5. Recursively Create Sub-topics (if provided)
 
 If the user provides an initial sub-topic list, recursively create sub-topic directories with their `README.md` and `FAQ.md`.
 
-### 7. Output Directory Tree
+### 6. Output Directory Tree
 
 Use the `tree` command or manual traversal to output the created directory structure:
 
@@ -188,7 +117,7 @@ Use the `tree` command or manual traversal to output the created directory struc
 
 ## Acceptance Criteria
 
-- [ ] User can iteratively confirm directory selection
+- [ ] Parent directory located via Retrieve Topic Node subskill
 - [ ] Duplicate directory detection works correctly
 - [ ] New topic directory structure is complete (contains at least `README.md` and `FAQ.md`)
 - [ ] `README.md` follows three-section format (Definition + Boundary + Sub-topic Index)

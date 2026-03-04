@@ -49,6 +49,20 @@ Before executing subskills that depend on configuration:
   - `delete <key>` - Delete config key
   - `check <key>` - Check if config exists (JSON output)
 
+## Retrieve Topic
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"find topic <topic_name>"`
+- `"retrieve topic <topic_name>"`
+- `"search topic <topic_name>"`
+- `"locate topic <topic_name>"`
+- `"where is <topic_name>"`
+- `"look up <topic_name>"`
+
+### Instructions
+Follow the complete workflow defined in [Retrieve Topic Skill Reference](references/retrieval-topic-skill.md).
+
 ## Create Topic
 
 ### When to Trigger?
