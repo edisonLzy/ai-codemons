@@ -60,25 +60,7 @@ Use `resources/FAQ-template.md` as the template, copy the template content and a
 
 #### 3.3 Optimize Formatting (IMPORTANT)
 
-**This step is REQUIRED.** Invoke the `obsidian-markdown` skill to optimize both files after creation. Apply the following rules:
-
-**README.md**
-
-| Element | Rule |
-|---|---|
-| Frontmatter | Add `aliases` field with common name variants (e.g., localized names) |
-| Includes boundary | Use `> [!success] Includes` callout instead of plain bold + list |
-| Excludes boundary | Use `> [!failure] Excludes` callout instead of plain bold + list |
-| Empty Sub-topic Index | Replace placeholder text with `> [!todo] 待完善` callout |
-
-**FAQ.md**
-
-| Element | Rule |
-|---|---|
-| Scope section | Use `> [!info] 收录范围` callout instead of plain list |
-| Each question block | Use `> [!faq]-` foldable callout (collapsed by default) |
-| Question / answer separator | Add `---` horizontal rule between question context and answer |
-| Section heading | Rename `## Structure` → `## Questions` |
+**This step is REQUIRED.** Follow the complete workflow defined in [Optimize Topic Files Skill Reference](./optimize-topic-files-skill.md).
 
 ### 4. Update Parent Directory README.md
 

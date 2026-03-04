@@ -75,3 +75,17 @@ Activate this skill when users provide any of these patterns:
 
 ### Instructions
 Follow the complete workflow defined in [Create Topic Skill Reference](references/create-topic-skill.md).
+
+## Convert Directory to Topic
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"convert topic <path>"`
+- `"convert directory <path>"`
+- `"convert <path> to topic"`
+- `"make <path> a topic"`
+- `"initialize topic at <path>"`
+- `"fix topic structure <path>"`
+
+### Instructions
+Follow the complete workflow defined in [Convert to Topic Skill Reference](references/convert-to-topic-skill.md).
