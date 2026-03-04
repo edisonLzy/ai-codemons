@@ -76,6 +76,20 @@ Activate this skill when users provide any of these patterns:
 ### Instructions
 Follow the complete workflow defined in [Create Topic Skill Reference](references/create-topic-skill.md).
 
+## Divide Into Topic
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"divide topic <topic_name>"`
+- `"divide into topic <topic_name>"`
+- `"break down topic <topic_name>"`
+- `"split topic <topic_name>"`
+- `"subdivide <topic_name>"`
+- `"decompose topic <topic_name>"`
+
+### Instructions
+Follow the complete workflow defined in [Divide Into Topic Skill Reference](references/divide-into-topic-skill.md).
+
 ## Convert Directory to Topic
 
 ### When to Trigger?
