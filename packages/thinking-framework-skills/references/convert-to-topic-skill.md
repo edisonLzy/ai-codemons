@@ -70,34 +70,11 @@ If the user declines, stop.
 
 ### 4. Generate README.md (if missing)
 
-Use `resources/README-template.md` as the base. Fill in all inferred metadata using plain Markdown. Leave sections as placeholders only when no information is available. Do **not** apply Obsidian-specific formatting here — that is handled by step 6.
-
-Template content after fill-in:
-
-```markdown
-# [Topic Name]
-
-> [One-sentence definition]
-
-## Boundary
-
-**Includes**:
-- [inferred item 1]
-
-**Excludes**:
-- [inferred item 1]
-
-## Sub-topic Index
-
-- [subtopicA]
-- [subtopicB]
-```
-
-(Leave Sub-topic Index as placeholder text when no subdirectories were found.)
+Use `resources/README-template.md` as the base. Fill in all inferred metadata (topic name, definition, includes/excludes, sub-topic index). Leave sections as placeholders only when no information is available.
 
 ### 5. Generate FAQ.md (if missing)
 
-Use `resources/FAQ-template.md` as the base. Fill in the scope section using the topic definition and boundary.
+Use `resources/FAQ-template.md` as the base. Fill in `{{topic}}` with the topic name and `{{tags}}` with relevant tags inferred from the directory context.
 
 ### 6. Optimize Formatting with obsidian-markdown Skill
 
