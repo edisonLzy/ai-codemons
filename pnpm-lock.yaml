@@ -121,6 +121,18 @@ importers:
         specifier: ^3.0.9
         version: 3.2.4(@types/node@20.19.33)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)
 
+  packages/thinking-framework-skills:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.17.25
+        version: 20.19.33
+      typescript:
+        specifier: ^5.8.2
+        version: 5.9.3
+      vitest:
+        specifier: ^3.0.9
+        version: 3.2.4(@types/node@20.19.33)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)
+
 packages:
 
   '@babel/code-frame@7.29.0':

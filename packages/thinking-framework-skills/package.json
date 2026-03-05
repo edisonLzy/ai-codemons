@@ -1,7 +1,7 @@
 {
-  "name": "@codemons/note-refining-skills",
+  "name": "@codemons/thinking-framework-skills",
   "version": "0.1.0",
-  "description": "Agent Skill for refining and improving notes",
+  "description": "Agent Skill for building and structuring mental frameworks",
   "license": "MIT",
   "author": "MCP Servers Team",
   "type": "module",
