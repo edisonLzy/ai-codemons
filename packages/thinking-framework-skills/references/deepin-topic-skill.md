@@ -91,40 +91,21 @@ For each researched knowledge point, produce a `.md` file in the target topic di
 **File naming**: use kebab-case based on the knowledge point name.
 Example: `event-loop.md`, `module-systems.md`, `prototype-chain.md`
 
-**File structure template**:
+**File structure**: strictly follow `resources/CONTENT-template.md`. Key elements to fill in:
 
-```markdown
-# [Knowledge Point Title]
-
-## Overview
-
-[1–3 sentence summary of the topic]
-
-## Core Concepts
-
-[Detailed explanation of the key concepts]
-
-## How It Works
-
-[Mechanisms, internals, step-by-step breakdown]
-
-## Practical Usage
-
-[Code examples, real-world applications]
-
-## Common Pitfalls
-
-[Gotchas, misconceptions, edge cases]
-
-## Advanced Considerations
-
-[Deeper nuances, performance implications, expert-level insights]
-
-## References
-
-- [Source 1](url)
-- [Source 2](url)
-```
+| Template 占位符 | 填写内容 |
+|----------------|---------|
+| `title` | 知识点标题 |
+| `date` | 当前日期（`YYYY-MM-DD`） |
+| `tags` | 继承父 topic 的 tags，追加知识点相关标签 |
+| `aliases` | 知识点的英文名或常见别称 |
+| `cssclass` | 所属 topic 名称 |
+| `[!abstract]` 目录 | 根据实际章节生成 wikilink 锚点目录 |
+| 一级 / 二级 / 子小节 | 按研究内容填充，保持模板层级结构 |
+| `[!tip]` / `[!warning]` / `[!info]` callout | 用于补充提示、常见错误、推荐做法 |
+| 对比表格 | 有多方案/多类型对比时使用，含 ✅/❌ 标记 |
+| `[!success]` 总结 | 用 1–4 条核心要点收尾 |
+| `相关资料` | 官方文档外链 + vault 内 wikilink |
 
 ---
 
@@ -132,11 +113,10 @@ Example: `event-loop.md`, `module-systems.md`, `prototype-chain.md`
 
 After all draft files are generated, invoke the **`/obsidian-markdown` skill** on each file to:
 
-- Apply proper Obsidian Flavored Markdown formatting
-- Add wikilinks (`[[...]]`) to link related topics and sub-topics within the vault
-- Add callouts for warnings, tips, and important notes
-- Ensure frontmatter properties are correctly set (e.g., `tags`, `created`)
-- Optimize headings, code blocks, and lists for readability
+- 校验并补全 frontmatter（`title`、`date`、`tags`、`aliases`、`cssclass`）
+- 将普通链接替换为 wikilink（`[[...]]`），关联 vault 内已有 topic
+- 确保 callout 语法正确（`> [!type]`）
+- 优化代码块语言标注、表格对齐、标题层级一致性
 
 ---
 
