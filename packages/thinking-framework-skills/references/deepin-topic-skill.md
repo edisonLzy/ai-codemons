@@ -88,8 +88,9 @@ Each research agent must:
 
 For each researched knowledge point, produce a `.md` file in the target topic directory.
 
-**File naming**: use kebab-case based on the knowledge point name.
-Example: `event-loop.md`, `module-systems.md`, `prototype-chain.md`
+**File naming**: use sequential numbering prefix + kebab-case based on the knowledge point name.
+Format: `{N}.{kebab-case-name}.md`，N 为该 topic 目录下已有知识点文件数量 + 1（从 1 开始）。
+Example: `1.event-loop.md`, `2.module-systems.md`, `3.prototype-chain.md`
 
 **File structure**: strictly follow `resources/CONTENT-template.md`. Key elements to fill in:
 
@@ -130,9 +131,9 @@ After all files are created and formatted, update the target topic's `README.md`
 ```markdown
 ## Knowledge Files
 
-- [[event-loop.md]] — How the JavaScript event loop works
-- [[module-systems.md]] — Comparison of CJS vs ESM module systems
-- [[prototype-chain.md]] — Prototype chain and inheritance mechanisms
+- [[1.event-loop.md]] — How the JavaScript event loop works
+- [[2.module-systems.md]] — Comparison of CJS vs ESM module systems
+- [[3.prototype-chain.md]] — Prototype chain and inheritance mechanisms
 ```
 
 3. Use wikilink format `[[filename]]` for all entries.
@@ -147,9 +148,9 @@ Output a clear summary of what was created:
 ✅ Deep research complete for topic: [Topic]
 
 Files created:
-  📄 event-loop.md
-  📄 module-systems.md
-  📄 prototype-chain.md
+  📄 1.event-loop.md
+  📄 2.module-systems.md
+  📄 3.prototype-chain.md
 
 Location: [topic_path]/
 

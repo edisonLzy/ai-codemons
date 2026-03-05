@@ -1,6 +1,5 @@
 {
   "name": "@codemons/thinking-framework-skills",
-  "private": true,
   "version": "0.1.0",
   "description": "Agent Skill for building and structuring mental frameworks",
   "license": "MIT",
