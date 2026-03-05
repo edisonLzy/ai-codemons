@@ -90,6 +90,20 @@ Activate this skill when users provide any of these patterns:
 ### Instructions
 Follow the complete workflow defined in [Divide Into Topic Skill Reference](references/divide-into-topic-skill.md).
 
+## Deep-in Topic
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"deep in topic <topic_name>"`
+- `"deepin topic <topic_name>"`
+- `"research topic <topic_name>"`
+- `"deep research <topic_name>"`
+- `"study topic <topic_name>"`
+- `"produce knowledge files for <topic_name>"`
+
+### Instructions
+Follow the complete workflow defined in [Deep-in Topic Skill Reference](references/deepin-topic-skill.md).
+
 ## Convert Directory to Topic
 
 ### When to Trigger?

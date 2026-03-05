@@ -1,20 +1,33 @@
+---
+tags:
+  - {{tags}}
+  - faq
+---
 # FAQ
 
-> This document records frequently asked questions about this topic.
+> 本文档记录 {{topic}} 主题下的常见问题、反直觉经验与实践陷阱。
 
 ## Scope
 
-- Questions related to core concepts of this topic
-- Common misconceptions and best practices in practice
+> [!info] 收录范围
+>
+> - {{topic}} 核心概念相关的疑问
+> - 实践中的常见误区与最佳实践
 
-## Structure
+## Questions
 
-Question X: [Question Title]
-
-### What is the question?
-1. **What is the question?**
-2. **What is the context?**
-
-### What is the answer?
-1. **What knowledge points are involved?**
-2. **What is the answer?**
+> [!faq]- Question 1：[问题标题]
+>
+> **问题是什么？**
+> （在此描述问题）
+>
+> **背景是什么？**
+> （在此描述背景）
+>
+> ---
+>
+> **涉及哪些知识点？**
+> （相关知识点列表）
+>
+> **答案是什么？**
+> （在此填写答案）

@@ -1,14 +1,25 @@
+---
+tags:
+  - {{tags}}
+aliases:
+  - {{aliases}}
+---
+
 # [Topic Name]
 
-> One-sentence definition
+> 一句话定义该主题。
 
-## Boundary
+## Scope
 
-**Includes**:
-- [Point 1]
+> [!success] Includes
+>
+> - [包含的内容 1]
+> - [包含的内容 2]
 
-**Excludes**:
-- [Point 1]
+> [!failure] Excludes
+>
+> - [排除的内容 1]
+> - [排除的内容 2]
 
 ## Sub-topic Index
 
