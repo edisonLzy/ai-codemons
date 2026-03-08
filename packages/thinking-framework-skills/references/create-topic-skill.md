@@ -52,9 +52,13 @@ Create the following directory structure:
 
 #### README.md Template
 
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
+
 Use `resources/README-template.md` as the template. Only fill in content provided by the user - leave placeholders for content not mentioned (e.g., Sub-topic Index section should remain with placeholder content).
 
 #### FAQ.md Template
+
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
 
 Use `resources/FAQ-template.md` as the template, copy the template content and add the scope description. Only include content provided by the user.
 

@@ -70,9 +70,13 @@ If the user declines, stop.
 
 ### 4. Generate README.md (if missing)
 
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
+
 Use `resources/README-template.md` as the base. Fill in all inferred metadata (topic name, definition, includes/excludes, sub-topic index). Leave sections as placeholders only when no information is available.
 
 ### 5. Generate FAQ.md (if missing)
+
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
 
 Use `resources/FAQ-template.md` as the base. Fill in `{{topic}}` with the topic name and `{{tags}}` with relevant tags inferred from the directory context.
 
