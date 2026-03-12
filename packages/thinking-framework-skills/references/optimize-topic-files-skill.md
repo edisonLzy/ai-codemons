@@ -35,6 +35,7 @@ Invoke the `obsidian-markdown` skill for all files, with the corresponding templ
 以 `resources/FAQ-template.md` 为标准格式对文件进行格式化。额外注意：
 
 - 旧文件若使用 `## Structure`，rename 为 `## Questions`
+- **⚠️ 约束**：确保每个 callout 标题行（如 `> [!faq]- Question X：...`）后有空行 `>`，否则无法折叠
 
 ### 4. Optimize Content Knowledge-point Files
 

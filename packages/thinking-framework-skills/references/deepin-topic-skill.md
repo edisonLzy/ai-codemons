@@ -86,6 +86,8 @@ Each research agent must:
 
 ### Step 4: Generate Knowledge Point Files
 
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
+
 For each researched knowledge point, produce a `.md` file in the target topic directory.
 
 **File naming**: use sequential numbering prefix + kebab-case based on the knowledge point name.
@@ -118,6 +120,8 @@ After all draft files are generated, invoke the **`/obsidian-markdown` skill** o
 - 将普通链接替换为 wikilink（`[[...]]`），关联 vault 内已有 topic
 - 确保 callout 语法正确（`> [!type]`）
 - 优化代码块语言标注、表格对齐、标题层级一致性
+
+知识点文件格式优化参考 **[Optimize Topic Files](./optimize-topic-files-skill.md)** 中的「4. Optimize Content Knowledge-point Files」规范。
 
 ---
 

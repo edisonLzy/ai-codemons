@@ -117,3 +117,17 @@ Activate this skill when users provide any of these patterns:
 
 ### Instructions
 Follow the complete workflow defined in [Convert to Topic Skill Reference](references/convert-to-topic-skill.md).
+
+## Optimize Topic Files
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"optimize topic <topic_name>"`
+- `"optimize topic files <topic_name>"`
+- `"format topic <topic_name>"`
+- `"format topic files <topic_name>"`
+- `"fix topic formatting <topic_name>"`
+- `"improve topic formatting <topic_name>"`
+
+### Instructions
+Follow the complete workflow defined in [Optimize Topic Files Skill Reference](references/optimize-topic-files-skill.md).

@@ -52,13 +52,19 @@ Create the following directory structure:
 
 #### README.md Template
 
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
+
 Use `resources/README-template.md` as the template. Only fill in content provided by the user - leave placeholders for content not mentioned (e.g., Sub-topic Index section should remain with placeholder content).
 
 #### FAQ.md Template
 
+> **⚠️ 约束**：如果需要新创建文件，只需要参考模版生成文件的内容结构即可，不要乱加任何未提及的内容。
+
 Use `resources/FAQ-template.md` as the template, copy the template content and add the scope description. Only include content provided by the user.
 
 #### 3.3 Optimize Formatting (IMPORTANT)
+
+> **⚠️ 约束**：FAQ 中的 callout 块（如 `> [!faq]-`）标题行后必须有空行 `>`，否则无法正确渲染为可折叠块。添加问题时确保每个部分之间有空行分隔。
 
 **This step is REQUIRED.** Follow the complete workflow defined in [Optimize Topic Files Skill Reference](./optimize-topic-files-skill.md).
 
