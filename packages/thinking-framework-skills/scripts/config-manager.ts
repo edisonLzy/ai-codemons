@@ -80,6 +80,33 @@ function check(key: string): void {
   );
 }
 
+function validate(key: string): void {
+  const config = loadConfig();
+  const value = config[key];
+
+  if (!value || typeof value !== 'string') {
+    console.log(
+      JSON.stringify({
+        valid: false,
+        key,
+        message: 'Configuration value is missing or invalid',
+        path: null,
+      })
+    );
+    return;
+  }
+
+  const pathExists = existsSync(value);
+  console.log(
+    JSON.stringify({
+      valid: pathExists,
+      key,
+      message: pathExists ? 'Path exists' : 'Path does not exist',
+      path: value,
+    })
+  );
+}
+
 const command = process.argv[2];
 const arg1 = process.argv[3];
 const arg2 = process.argv[4];
@@ -119,14 +146,22 @@ switch (command) {
     }
     check(arg1);
     break;
+  case 'validate':
+    if (!arg1) {
+      console.error('Usage: config-manager.ts validate <key>');
+      process.exit(1);
+    }
+    validate(arg1);
+    break;
   default:
     console.log('Usage: config-manager.ts <command> [args]');
     console.log('');
     console.log('Commands:');
-    console.log('  init              Initialize config file');
-    console.log('  get <key>         Get config value');
-    console.log('  set <key> <value> Set config value');
-    console.log('  list              List all config');
-    console.log('  delete <key>     Delete config key');
-    console.log('  check <key>      Check if config exists (JSON output)');
+    console.log('  init               Initialize config file');
+    console.log('  get <key>          Get config value');
+    console.log('  set <key> <value>  Set config value');
+    console.log('  list               List all config');
+    console.log('  delete <key>      Delete config key');
+    console.log('  check <key>       Check if config exists (JSON output)');
+    console.log('  validate <key>    Validate path exists (JSON output)');
 }
