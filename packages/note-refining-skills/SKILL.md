@@ -1,76 +1,96 @@
 ---
 name: note-refining-skills
-description: A skill for refining, restructuring, and improving notes to make them clearer and more actionable.
+description: Refine and optimize notes from codemo.asia into structured knowledge points.
 ---
 
-# Note Refining Skill
+# Note Refining Skills
 
 ## Overview
 
-This skill helps AI agents refine raw notes, meeting minutes, brainstorming dumps, and other unstructured text into well-organized, clear, and actionable documents.
+This skill refines and optimizes notes from codemo.asia into structured, high-quality knowledge documents. It integrates with the @codemons/cli tool to fetch highlights and content, then transforms them into organized knowledge points within the Obsidian knowledge framework.
 
-## When to Use
+## Prerequisites
 
-- When the user asks to clean up, refine, or restructure their notes
-- When processing raw meeting minutes or brainstorming outputs
-- When converting unstructured text into structured formats
+### 1. CLI Availability Check
 
-## Instructions
+Before executing any subskill, verify that `codemons-cli` is available:
 
-### Step 1: Analyze the Input
+1. First try running `codemons-cli --version` directly
+2. If not available, install it globally: `npm install -g @codemons/cli`
+3. Verify installation: `codemons-cli --version`
 
-Read the raw note content and identify:
-- **Key topics** — the main subjects discussed
-- **Action items** — tasks or follow-ups mentioned
-- **Decisions** — conclusions or agreements reached
-- **Open questions** — unresolved items
+### 2. Authentication Check
 
-### Step 2: Restructure
+Verify that the user is logged in:
 
-Reorganize the content into a clear structure:
-
-1. **Summary** — A 1-2 sentence overview
-2. **Key Points** — Bullet points of main topics, grouped by theme
-3. **Action Items** — Each with owner (if mentioned) and deadline (if mentioned)
-4. **Decisions** — What was decided and the rationale
-5. **Open Questions** — Items that need follow-up
-
-### Step 3: Refine Language
-
-- Fix grammar and spelling
-- Replace vague language with precise wording
-- Remove redundancy and filler
-- Maintain the original tone and intent
-
-### Step 4: Output
-
-Produce the refined note in clean Markdown format, preserving any original context that would be lost through over-simplification.
-
-## Output Format
-
-```markdown
-# [Note Title]
-
-## Summary
-[1-2 sentence overview]
-
-## Key Points
-- [Point 1]
-- [Point 2]
-
-## Action Items
-- [ ] [Task] — @[Owner] (Due: [Date])
-
-## Decisions
-- [Decision 1]: [Rationale]
-
-## Open Questions
-- [Question 1]
+```bash
+codemons-cli auth
 ```
 
-## Guidelines
+If not logged in (no user info shown), prompt the user:
 
-- **Preserve intent** — Never change the meaning of the original content
-- **Be concise** — Remove noise, keep signal
-- **Stay neutral** — Do not add opinions or assumptions not present in the original
-- **Ask for clarification** — If the original is ambiguous, ask the user before assuming
+> You are not logged in to codemo.asia. Please run:
+> ```bash
+> codemons-cli auth
+> ```
+> Follow the instructions to complete login.
+
+### 3. Configuration
+
+This skill does not require any configuration. All inputs are provided by the user during execution.
+
+---
+
+## Sub Skills
+
+### Deepin Page Content
+
+**When to Trigger:**
+- "deepin page content \<url\>"
+- "deepin page \<url\>"
+- "process page highlights \<url\>"
+- "refine page content from \<url\>"
+- "create knowledge from \<url\>"
+
+**Instructions:**
+Follow the complete workflow defined in [Deepin Page Content Skill Reference](references/deepin-page-content-skill.md).
+
+### Summary Daily Note
+
+**When to Trigger:**
+- "summary daily note"
+- "daily note summary"
+- "today's note summary"
+- "summarize today's notes"
+- "daily digest"
+
+**Instructions:**
+Follow the complete workflow defined in [Summary Daily Note Skill Reference](references/summary-daily-note-skill.md).
+
+---
+
+## Integration with Thinking Framework
+
+This skill integrates with [thinking-framework-skills](../thinking-framework-skills/SKILL.md):
+
+1. **Convert Content to Knowledge Point**: After refining page content or daily notes, use the "Convert Content to Knowledge Point" subskill from thinking-framework-skills to save the refined content as a structured knowledge point.
+
+2. **Optimize Topic Files**: After creating knowledge points, use the "Optimize Topic Files" subskill to ensure proper Obsidian formatting.
+
+---
+
+## Helper Commands
+
+### Check CLI Status
+
+```bash
+# Check CLI version
+codemons-cli --version
+
+# Check auth status
+codemons-cli auth
+
+# Query highlights for a URL
+codemons-cli note -q '{"url":"<url>"}'
+```
+
