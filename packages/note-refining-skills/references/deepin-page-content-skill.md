@@ -48,12 +48,19 @@ If user did not provide a URL, ask:
 
 Execute:
 ```bash
-codemons-cli note -q '{"url":"<user_url>","tags":["important","idea","question"]}'
+codemons-cli highlight --url <user_url> --tag Important
+codemons-cli highlight --url <user_url> --tag Idea
+codemons-cli highlight --url <user_url> --tag Question
+```
+
+Or use a single JSON query:
+```bash
+codemons-cli highlight --query '{"url":"<user_url>","tag":"Important"}'
 ```
 
 Parse the JSON output to extract highlights. Each highlight should have:
 - `content`: The user's note/thought
-- `tag`: The highlight tag (important/idea/question)
+- `tag`: The highlight tag (Important/Idea/Question)
 - `created_at`: When the highlight was created
 
 ### 5. Fetch Page Content
@@ -124,12 +131,15 @@ When fetching highlights, the output format is:
     {
       "id": "hl_xxx",
       "content": "用户的问题或想法内容",
-      "tag": "important|idea|question",
-      "created_at": "2024-01-15T10:30:00Z"
+      "tag": "Important|Idea|Question|Vocabulary|Sentence",
+      "created_at": "2024-01-15T10:30:00Z",
+      "url": "https://codemo.asia/notes/xxx"
     }
   ]
 }
 ```
+
+**Tag types (capitalized):** `Important`, `Idea`, `Question`, `Vocabulary`, `Sentence`
 
 ## Acceptance Criteria
 

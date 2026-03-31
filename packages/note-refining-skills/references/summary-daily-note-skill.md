@@ -43,19 +43,31 @@ Ask user where to save the daily note:
 - Option A: Output as markdown to copy/paste
 - Option B: User provides a specific file path
 
-### 4. Fetch Today's Highlights
+### 4. Fetch Highlights
 
-Construct the query for today's date:
+Use the provided date utility script to generate timestamp ranges:
+
 ```bash
-codemons-cli note -q '{"date":"2024-01-15"}'
+# Get today's highlights
+npx tsx scripts/date.ts today
+
+# Get highlights from the last 3 days
+npx tsx scripts/date.ts t-3
+
+# Get highlights for a specific date
+npx tsx scripts/date.ts date 2026-03-15
 ```
 
-Or without date filter to get recent highlights, then filter client-side:
+Then execute the CLI command with the generated timestamps:
+
 ```bash
-codemons-cli note -q '{}'
+codemons-cli highlight --start-date <timestamp> --end-date <timestamp>
 ```
 
-Parse the output and filter highlights created today.
+For example, for today's highlights:
+```bash
+codemons-cli highlight --start-date 1774886400000 --end-date 1774972799999
+```
 
 ### 5. Group Highlights by Tag
 
@@ -152,15 +164,20 @@ Option B: Save to user-provided file path
 📁 Saved to: {vault_path}/daily-notes/2024-01-15.md
 ```
 
-## Sample CLI Query for Today's Highlights
+## Sample CLI Query for Highlights
 
 ```bash
-# Get all highlights (then filter by today's date)
-codemons-cli note -q '{}'
+# Get all highlights from today (using date script)
+npx tsx scripts/date.ts today
 
-# Query format for date filter
-codemons-cli note -q '{"created_after":"2024-01-15T00:00:00Z"}'
+# Get highlights from last 3 days
+npx tsx scripts/date.ts t-3
+
+# Get highlights for specific date range
+npx tsx scripts/date.ts range 2026-03-01 2026-03-31
 ```
+
+**Tag types (capitalized):** `Important`, `Idea`, `Question`, `Vocabulary`, `Sentence`
 
 ## Acceptance Criteria
 

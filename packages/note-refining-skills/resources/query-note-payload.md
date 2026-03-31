@@ -1,87 +1,55 @@
-# Query Note Payload
+# Query Highlight Payload
 
-Sample payloads for `codemons-cli note` command.
+Sample payloads for `codemons-cli highlight` command.
 
 ## Supported Query Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `url` | string | Valid URL prefix filter |
-| `tag` | string | One of: Question, Idea, Important, Vocabulary, Sentence |
-| `startDate` | number | Unix timestamp in milliseconds |
-| `endDate` | number | Unix timestamp in milliseconds |
-| `limit` | number | Integer, min 1, max 200, default 200 |
-| `offset` | number | Integer, min 0, default 0 |
+| Parameter | Flag | Type | Description |
+|-----------|------|------|-------------|
+| `url` | `--url` | string | Filter by URL prefix |
+| `tag` | `--tag` | string | One of: Question, Idea, Important, Vocabulary, Sentence |
+| `startDate` | `--start-date` | number | Start date as Unix timestamp in milliseconds |
+| `endDate` | `--end-date` | number | End date as Unix timestamp in milliseconds |
+| `limit` | `--limit` | number | Integer, min 1, max 200, default 200 |
+| `offset` | `--offset` | number | Integer, min 0, default 0 |
 
-## Example Payloads
+## CLI Usage Patterns
 
-### Get Highlights by URL
+### Using Individual Flags (Recommended)
 
 ```bash
-codemons-cli note -q '{"url":"https://codemo.asia/notes/xxx","tag":"Important"}'
+# Get highlights by URL
+codemons-cli highlight --url https://codemo.asia/notes/xxx --tag Important
+
+# Get today's highlights (use date script for accurate timestamps)
+npx tsx scripts/date.ts today
+# Then use the output timestamps with:
+codemons-cli highlight --start-date <start> --end-date <end>
+
+# Get highlights by tag
+codemons-cli highlight --tag Question --limit 10
+
+# Combined filters
+codemons-cli highlight --url https://codemo.asia/ --tag Important --limit 50
 ```
 
-### Get Today's Highlights
+### Using JSON Query
 
 ```bash
-# Using startDate (today 00:00:00 local time)
-# Calculate: new Date(new Date().setHours(0,0,0,0)).getTime()
-
-# Method 1: Calculate dynamically in terminal
-codemons-cli note -q "{\"startDate\":$(date -v0S +%s000)}"
-
-# Method 2: Use a fixed timestamp (for 2026-03-17)
-codemons-cli note -q '{"startDate":1773703200000}'
-```
-
-> Note: The timestamp depends on your timezone. Use Method 1 for accuracy.
-
-### Get Today's Highlights by Tag
-
-```bash
-# Today's Important highlights
-codemons-cli note -q "{\"startDate\":$(date -v0S +%s000),\"tag\":\"Important\"}"
-
-# Today's Ideas
-codemons-cli note -q "{\"startDate\":$(date -v0S +%s000),\"tag\":\"Idea\"}"
-
-# Today's Questions
-codemons-cli note -q "{\"startDate\":$(date -v0S +%s000),\"tag\":\"Question\"}"
-```
-
-### Get Recent Highlights
-
-```bash
-codemons-cli note -q '{}'
-```
-
-### Get Highlights by Tag
-
-```bash
-codemons-cli note -q '{"tag":"Idea"}'
-```
-
-### Get Highlights with Limit
-
-```bash
-codemons-cli note -q '{"limit":50,"offset":0}'
-```
-
-### Combined Query
-
-```bash
-codemons-cli note -q '{"url":"https://codemo.asia/","tag":"Question","startDate":1705276800000,"limit":10}'
+codemons-cli highlight --query '{"url":"https://codemo.asia/","tag":"Important"}'
 ```
 
 ## Tag Types
 
 | Tag | Description |
 |-----|-------------|
-| `Question` | Unresolved questions, doubts, things to investigate |
-| `Idea` | Creative thoughts, suggestions, innovative ideas |
 | `Important` | Key insights, critical information, main takeaways |
+| `Idea` | Creative thoughts, suggestions, innovative ideas |
+| `Question` | Unresolved questions, doubts, things to investigate |
 | `Vocabulary` | New words, terms, definitions |
 | `Sentence` | Notable sentences, quotes |
+
+> Note: Tags are **case-sensitive** and must be capitalized.
 
 ## Response Format
 
@@ -91,10 +59,23 @@ codemons-cli note -q '{"url":"https://codemo.asia/","tag":"Question","startDate"
     {
       "id": "hl_xxx",
       "content": "The user's highlight/note content",
-      "tag": "Question|Idea|Important|Vocabulary|Sentence",
+      "tag": "Important",
       "created_at": "2024-01-15T10:30:00Z",
       "url": "https://codemo.asia/notes/xxx"
     }
   ]
 }
+```
+
+## Quick Reference
+
+```bash
+# Today's highlights (use date script)
+npx tsx scripts/date.ts today
+
+# Last 3 days highlights
+npx tsx scripts/date.ts t-3
+
+# Recent highlights (all tags)
+codemons-cli highlight --limit 50
 ```

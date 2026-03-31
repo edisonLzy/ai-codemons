@@ -91,6 +91,12 @@ codemons-cli --version
 codemons-cli auth
 
 # Query highlights for a URL
-codemons-cli note -q '{"url":"<url>"}'
+codemons-cli highlight --url <url>
+
+# Query highlights with tag filter
+codemons-cli highlight --url <url> --tag Important
+
+# Query today's highlights
+codemons-cli highlight --start-date <timestamp>
 ```
 
