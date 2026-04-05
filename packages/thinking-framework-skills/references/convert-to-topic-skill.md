@@ -26,12 +26,15 @@ Build a **Directory Snapshot** in memory:
 
 ```
 target/
-├── README.md?          (exists / missing)
-├── FAQ.md?             (exists / missing)
-├── subtopicA/          (has README? y/n)
-├── subtopicB/          (has README? y/n)
-└── note1.md            (existing content file)
+├── README.md?                      (exists / missing)
+├── FAQ.md?                         (exists / missing)
+├── 1.知识文档A.md                  (existing knowledge doc with index)
+├── 2.知识文档B.md                  (existing knowledge doc with index)
+├── subtopicA/                      (has README? y/n)
+└── subtopicB/                      (has README? y/n)
 ```
+
+**注意**：知识文档应带序号前缀（如 `1.`, `2.`），无序号的文件在转换时应提醒用户补充序号。
 
 ### 2. Infer Topic Metadata
 
@@ -130,14 +133,25 @@ Process each directory in order. If any subdirectory fails, log the error and co
 ✅ Conversion complete!
 
 [target_path]/
-├── README.md      ← created
-├── FAQ.md         ← created
+├── README.md              ← created (or updated)
+├── FAQ.md                 ← created (or updated)
+├── 1.知识文档A.md        ← existing (untouched)
+├── 2.知识文档B.md        ← existing (untouched)
 ├── subtopicA/
-│   ├── README.md  ← created (recursive)
-│   └── FAQ.md     ← created (recursive)
-└── existing-note.md  (untouched)
+│   ├── README.md          ← created (recursive)
+│   ├── FAQ.md            ← created (recursive)
+│   └── 1.子topic文档.md  ← existing (untouched)
+└── subtopicB/
+    ├── README.md          ← created (recursive)
+    └── FAQ.md             ← created (recursive)
 
 Parent README updated: [parent_path]/README.md
+```
+
+**Note**: If existing knowledge documents lack numbered prefixes, warn the user:
+```
+⚠️  Warning: Some knowledge documents are missing index prefixes.
+   Consider renaming them to: 1.xxx.md, 2.xxx.md, etc.
 ```
 
 ## Acceptance Criteria
@@ -148,6 +162,7 @@ Parent README updated: [parent_path]/README.md
 - [ ] Generated README.md follows the three-section format (Definition + Boundary + Sub-topic Index)
 - [ ] Generated FAQ.md follows the template structure
 - [ ] Both files are formatted with Obsidian Markdown (callouts, frontmatter aliases)
+- [ ] Knowledge documents with missing index prefixes trigger a warning to the user
 - [ ] Parent README.md sub-topic index is updated (or a warning is shown if parent has no README)
 - [ ] Recursive mode converts all subdirectories missing a README.md
 - [ ] A clear summary tree is printed after completion
