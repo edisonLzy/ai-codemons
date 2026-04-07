@@ -1,3 +1,20 @@
+---
+name: convert-content-to-knowledge-point
+description: Convert existing content into a structured knowledge point document within a specified topic directory, following the framework's formatting standards.
+---
+
+# Convert Content to Knowledge Point
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Convert Content to Knowledge Point
 
 ## Goal
@@ -9,7 +26,7 @@ Convert existing content into a structured knowledge point document within a spe
 - **Content to convert**: The source material to be transformed (provided by user)
 - **Topic path**: Either:
   - User-specified absolute path to the target topic directory
-  - If not specified, use the [Retrieve Topic Skill](./retrieval-topic-skill.md) to locate the appropriate topic
+  - If not specified, use the [Retrieve Topic Skill](../retrieve-topic/SKILL.md) to locate the appropriate topic
 - **Knowledge point name**: Optional user-specified name; if not provided, generate from content summary
 - **Tags**: Optional user-specified tags for frontmatter
 
@@ -40,7 +57,7 @@ Proceed with creating knowledge point? [Y/n]
 
 If the user has NOT provided a topic path:
 
-1. Invoke the [Retrieve Topic Skill](./retrieval-topic-skill.md) to locate the appropriate topic
+1. Invoke the [Retrieve Topic Skill](../retrieve-topic/SKILL.md) to locate the appropriate topic
 2. Use the returned topic path for subsequent steps
 
 ### 2. Determine File Index
@@ -93,7 +110,7 @@ Which name would you like to use? Select a number or enter a custom name:
 
 ### 5. Optimize Formatting (Required)
 
-After creating the file, use the [Optimize Topic Files Skill](./optimize-topic-files-skill.md) to ensure proper Obsidian formatting:
+After creating the file, use the [Optimize Topic Files Skill](../optimize-topic-files/SKILL.md) to ensure proper Obsidian formatting:
 
 - Callout blocks are properly formatted
 - Frontmatter is correct

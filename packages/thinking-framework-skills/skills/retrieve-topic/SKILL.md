@@ -1,3 +1,20 @@
+---
+name: retrieve-topic
+description: Locate the most relevant topic directory in the Obsidian knowledge tree based on a search query.
+---
+
+# Retrieve Topic
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Retrieve Topic Node
 
 ## Goal

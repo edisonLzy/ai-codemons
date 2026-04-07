@@ -1,3 +1,20 @@
+---
+name: divide-into-topic
+description: Divide a large topic into smaller, well-defined sub-topic nodes through web research and user collaboration.
+---
+
+# Divide Into Topic
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Divide Into Topic
 
 ## Goal
@@ -32,10 +49,10 @@ flowchart TD
 
 ### Step 1: Locate Target Topic
 
-Invoke the **[Retrieve Topic Node](./retrieval-topic-skill.md)** subskill using the user-specified topic name as the query.
+Invoke the **[Retrieve Topic Node](../retrieve-topic/SKILL.md)** subskill using the user-specified topic name as the query.
 
 - On success: obtain the confirmed topic directory path and read its `README.md` to understand the current scope and existing sub-topics.
-- If not found: inform the user and offer to create the topic first using the **[Create Topic Skill](./create-topic-skill.md)**.
+- If not found: inform the user and offer to create the topic first using the **[Create Topic Skill](../create-topic/SKILL.md)**.
 
 ---
 
@@ -105,7 +122,7 @@ Iterate with the user until the list is explicitly confirmed. Do not proceed to 
 
 ### Step 5: Parallel Sub-Topic Creation
 
-Once the sub-topic list is confirmed, dispatch **multiple Create Topic agents in parallel** — one per sub-topic — using the **[Create Topic Skill](./create-topic-skill.md)**.
+Once the sub-topic list is confirmed, dispatch **multiple Create Topic agents in parallel** — one per sub-topic — using the **[Create Topic Skill](../create-topic/SKILL.md)**.
 
 Each agent receives:
 - Parent directory: the target topic path (from Step 1)
