@@ -33,6 +33,8 @@ Invoke the **[Retrieve Topic Node](./retrieval-topic-skill.md)** subskill to loc
 Existing content:
 - README.md
 - FAQ.md
+- 1.知识文档A.md
+- 2.知识文档B.md
 - subtopicA/
 
 Overwrite? [y/N]
@@ -46,8 +48,14 @@ Create the following directory structure:
 
 ```
 /[topic-name]/
-├── README.md      # Basic structure: Definition + Boundary + Sub-topic Index
-└── FAQ.md         # FAQ documentation
+├── README.md                      # 必须：Definition + Boundary + Sub-topic Index
+├── FAQ.md                       # 必须：常见问题 + 实践经验沉淀
+├── 1.知识文档A.md              # 可选：知识文档，带序号前缀
+├── 2.知识文档B.md              # 可选：知识文档，带序号前缀
+└── [subtopic1]/                 # 可选：子 Topic
+    ├── README.md
+    ├── FAQ.md
+    └── 1.子topic知识文档.md    # 可选：子 Topic 下的知识文档
 ```
 
 #### README.md Template
@@ -98,16 +106,19 @@ Use the `tree` command or manual traversal to output the created directory struc
 └── [topic_name]/
     ├── README.md
     ├── FAQ.md
+    ├── 1.知识文档A.md       ← (optional, if provided)
+    ├── 2.知识文档B.md       ← (optional, if provided)
     └── [subtopic1]/
         ├── README.md
-        └── FAQ.md
+        ├── FAQ.md
+        └── 1.子topic文档.md  ← (optional, if provided)
 ```
 
 ## Acceptance Criteria
 
 - [ ] Parent directory located via Retrieve Topic Node subskill
 - [ ] Duplicate directory detection works correctly
-- [ ] New topic directory structure is complete (contains at least `README.md` and `FAQ.md`)
+- [ ] New topic directory structure is complete (contains `README.md` and `FAQ.md`, optionally with numbered knowledge docs)
 - [ ] `README.md` follows three-section format (Definition + Boundary + Sub-topic Index)
 - [ ] `FAQ.md` uses template structure
 - [ ] Parent directory `README.md` updated with new topic in sub-topic index
