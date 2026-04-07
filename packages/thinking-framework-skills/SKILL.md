@@ -1,15 +1,29 @@
 ---
-name: thinking-framework-skills
-description: Obsidian-based knowledge tree framework for creating topic nodes.
+name: thinking-framework
+description: Obsidian-based knowledge tree framework — shared context and structure definition used by all thinking-framework sub-skills.
 ---
 
-# Thinking Framework Skills
+# Thinking Framework
 
 ## Overview
 
-This skill maintains an Obsidian-based knowledge tree structure. Each topic directory is a node with a standard structure. **All sub-skills depend on this structure — treat this as the canonical definition.**
+This is the shared framework definition for the Obsidian-based knowledge tree. Each topic directory is a node with a standard structure. **All sub-skills depend on this structure — treat this as the canonical definition.**
 
-### Topic Directory Structure
+## Available Skills
+
+Each sub-skill below is independently invocable as a slash command:
+
+| Skill | File | Description |
+|-------|------|-------------|
+| `/retrieve-topic` | [skills/retrieve-topic.md](skills/retrieve-topic.md) | Locate the most relevant topic directory |
+| `/create-topic` | [skills/create-topic.md](skills/create-topic.md) | Create a new topic node |
+| `/divide-into-topic` | [skills/divide-into-topic.md](skills/divide-into-topic.md) | Divide a topic into sub-topics |
+| `/deepin-topic` | [skills/deepin-topic.md](skills/deepin-topic.md) | Deep research a topic and produce knowledge files |
+| `/convert-to-topic` | [skills/convert-to-topic.md](skills/convert-to-topic.md) | Convert a directory into a topic node |
+| `/optimize-topic-files` | [skills/optimize-topic-files.md](skills/optimize-topic-files.md) | Apply Obsidian formatting to topic files |
+| `/convert-content-to-knowledge-point` | [skills/convert-content-to-knowledge-point.md](skills/convert-content-to-knowledge-point.md) | Save content as a structured knowledge point |
+
+## Topic Directory Structure
 
 ```
 topic-name/                    # Topic 目录
@@ -111,99 +125,3 @@ Before executing subskills that depend on configuration:
   - `check <key>` - Check if config exists (JSON output)
   - `validate <key>` - Validate if configured path exists (JSON output)
 
-## Retrieve Topic
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"find topic <topic_name>"`
-- `"retrieve topic <topic_name>"`
-- `"search topic <topic_name>"`
-- `"locate topic <topic_name>"`
-- `"where is <topic_name>"`
-- `"look up <topic_name>"`
-
-### Instructions
-Follow the complete workflow defined in [Retrieve Topic Skill Reference](references/retrieval-topic-skill.md).
-
-## Create Topic
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"create topic <topic_name>"`
-- `"new topic <topic_name>"`
-- `"add subtopic <topic_name> to <parent_topic>"`
-- `"initialize topic <topic_name>"`
-- `"create knowledge node <topic_name>"`
-
-### Instructions
-Follow the complete workflow defined in [Create Topic Skill Reference](references/create-topic-skill.md).
-
-## Divide Into Topic
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"divide topic <topic_name>"`
-- `"divide into topic <topic_name>"`
-- `"break down topic <topic_name>"`
-- `"split topic <topic_name>"`
-- `"subdivide <topic_name>"`
-- `"decompose topic <topic_name>"`
-
-### Instructions
-Follow the complete workflow defined in [Divide Into Topic Skill Reference](references/divide-into-topic-skill.md).
-
-## Deep-in Topic
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"deep in topic <topic_name>"`
-- `"deepin topic <topic_name>"`
-- `"research topic <topic_name>"`
-- `"deep research <topic_name>"`
-- `"study topic <topic_name>"`
-- `"produce knowledge files for <topic_name>"`
-
-### Instructions
-Follow the complete workflow defined in [Deep-in Topic Skill Reference](references/deepin-topic-skill.md).
-
-## Convert Directory to Topic
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"convert topic <path>"`
-- `"convert directory <path>"`
-- `"convert <path> to topic"`
-- `"make <path> a topic"`
-- `"initialize topic at <path>"`
-- `"fix topic structure <path>"`
-
-### Instructions
-Follow the complete workflow defined in [Convert to Topic Skill Reference](references/convert-to-topic-skill.md).
-
-## Optimize Topic Files
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"optimize topic <topic_name>"`
-- `"optimize topic files <topic_name>"`
-- `"format topic <topic_name>"`
-- `"format topic files <topic_name>"`
-- `"fix topic formatting <topic_name>"`
-- `"improve topic formatting <topic_name>"`
-
-### Instructions
-Follow the complete workflow defined in [Optimize Topic Files Skill Reference](references/optimize-topic-files-skill.md).
-
-## Convert Content to Knowledge Point
-
-### When to Trigger?
-Activate this skill when users provide any of these patterns:
-- `"convert content to knowledge point <content>"`
-- `"save content as knowledge point"`
-- `"create knowledge point from <content>"`
-- `"add knowledge point <content>"`
-- `"record knowledge from <content>"`
-- `"preserve as knowledge point"`
-
-### Instructions
-Follow the complete workflow defined in [Convert Content to Knowledge Point Skill Reference](references/convert-content-to-knowledge-point-skill.md).
