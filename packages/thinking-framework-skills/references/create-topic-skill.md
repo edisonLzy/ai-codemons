@@ -1,4 +1,4 @@
-# Subskill: Create Topic Node
+# Create Topic Node
 
 ## Goal
 

@@ -194,16 +194,30 @@ Activate this skill when users provide any of these patterns:
 ### Instructions
 Follow the complete workflow defined in [Optimize Topic Files Skill Reference](references/optimize-topic-files-skill.md).
 
-## Convert Content to Knowledge Point
+## Retrieve Knowledge Point
 
 ### When to Trigger?
 Activate this skill when users provide any of these patterns:
-- `"convert content to knowledge point <content>"`
-- `"save content as knowledge point"`
-- `"create knowledge point from <content>"`
-- `"add knowledge point <content>"`
-- `"record knowledge from <content>"`
-- `"preserve as knowledge point"`
+- `"find knowledge point <keywords>"`
+- `"retrieve knowledge point <keywords>"`
+- `"search knowledge <keywords>"`
+- `"find doc <keywords>"`
+- `"look up knowledge <keywords>"`
+- `"locate knowledge document <keywords>"`
 
 ### Instructions
-Follow the complete workflow defined in [Convert Content to Knowledge Point Skill Reference](references/convert-content-to-knowledge-point-skill.md).
+Follow the complete workflow defined in [Retrieve Knowledge Point Skill Reference](references/retrieval-knowledge-point-skill.md).
+
+## Upsert Knowledge Point
+
+### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"save knowledge <content>"`
+- `"store knowledge <content>"`
+- `"create knowledge point <content>"`
+- `"add knowledge <content>"`
+- `"update knowledge point <keywords> with <content>"`
+- `"upsert knowledge <keywords>"`
+
+### Instructions
+Follow the complete workflow defined in [Upsert Knowledge Point Skill Reference](references/upsert-knowledge-point-skill.md).
