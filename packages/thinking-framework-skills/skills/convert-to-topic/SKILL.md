@@ -1,3 +1,20 @@
+---
+name: convert-to-topic
+description: Convert an existing non-topic directory into a standard Obsidian knowledge tree topic node by generating README.md and FAQ.md.
+---
+
+# Convert Directory to Topic
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Convert Directory to Topic Node
 
 ## Goal
@@ -85,7 +102,7 @@ Use `resources/FAQ-template.md` as the base. Fill in `{{topic}}` with the topic 
 
 ### 6. Optimize Formatting with obsidian-markdown Skill
 
-**This step is REQUIRED for both files.** Follow the complete workflow defined in [Optimize Topic Files Skill Reference](./optimize-topic-files-skill.md).
+**This step is REQUIRED for both files.** Follow the complete workflow defined in [Optimize Topic Files](../optimize-topic-files/SKILL.md).
 
 ### 7. Update Parent Directory README.md
 

@@ -1,4 +1,9 @@
-# Subskill: Retrieve Topic Node
+---
+name: thinking-framework-skills-find
+description: Locate the most relevant topic directory in the Obsidian knowledge tree based on a search query.
+argument-hint: [query]
+context: fork
+---
 
 ## Goal
 
@@ -12,8 +17,8 @@ Following the progressive disclosure principle, traversal starts from the vault 
 
 ## Constraints
 
-- Maximum traversal depth: **3 layers** from vault root
-- If no topic is confirmed within 3 layers, report that no matching topic was found
+- Maximum traversal depth: **5 layers** from vault root
+- If no topic is confirmed within 5 layers, report that no matching topic was found
 
 ## Execution Steps
 
@@ -21,28 +26,36 @@ Following the progressive disclosure principle, traversal starts from the vault 
 
 ```mermaid
 flowchart TD
-    A[Start: vault root, depth=1] --> B[Read current README.md]
-    B --> C[Scan subdirectories]
-    C --> D{Any subdirs match query?}
-    D -->|No match| E{depth >= 3?}
-    E -->|Yes| F[Report: no matching topic found]
-    E -->|No| G[Inform user: no match at this level\nAsk if they want to specify a path manually]
+    A[Start: vault root, depth=1] --> B[Read README.md]
+    B --> C[Scan children]
+    C --> D{Any child matches query?}
+    D -->|No| E{depth >= 3?}
+    E -->|Yes| F[Report: no match]
+    E -->|No| G[Ask user to specify path manually]
     G -->|User provides path| H[Jump to that path]
     G -->|User gives up| F
     H --> B
-    D -->|Matches found| I[Rank candidates by keyword relevance]
-    I --> J[Present top candidates to user via AskUser]
-    J --> K{User confirms a candidate?}
-    K -->|Yes| L[✅ Return confirmed topic path]
+    D -->|Matches found| I[Rank candidates]
+    I --> J[Present candidates via AskUser]
+    J --> K{User confirms?}
+    K -->|Yes| L[✅ Return confirmed path]
     K -->|No / drill deeper| M{depth >= 3?}
     M -->|Yes| F
-    M -->|No| N[Move into selected subdirectory, depth++]
+    M -->|No| N[Descend into selected child, depth++]
     N --> B
 ```
 
+### 0a. Understand Topic Structure
+
+Reference `references/framework-structure.md` to understand the topic directory structure.
+
+### 0b. Validate Configuration
+
+Reference `references/config-check-flow.md` to verify `obsidian_vault_path` is set and valid.
+
 ### 1. Resolve Vault Root
 
-Use the configured `obsidian_vault_path` as the starting directory (depth = 1).
+Use `obsidian_vault_path` from config as starting directory (depth = 1).
 
 ### 2. Read Current Layer
 
@@ -89,8 +102,8 @@ Which topic are you looking for? Select a number to confirm, or "more" to drill 
 
 If no candidates were found **or** the user rejected all candidates:
 
-- If `depth < 3`: inform the user that no match was found at this level, and ask if they want to manually specify a subdirectory path to continue searching. If they provide a path, jump there and continue. If not, stop.
-- If `depth >= 3`: report that the topic was not found within 3 layers and stop.
+- If `depth < 5`: inform the user that no match was found at this level, and ask if they want to manually specify a subdirectory path to continue searching. If they provide a path, jump there and continue. If not, stop.
+- If `depth >= 5`: report that the topic was not found within 3 layers and stop.
 
 ```
 ⚠️ No matching topic found within 3 layers of the knowledge tree.
@@ -111,16 +124,6 @@ On success, output the confirmed topic path clearly:
 README.md summary:
 > Frontend development covers HTML, CSS, and JavaScript frameworks...
 ```
-
-## Acceptance Criteria
-
-- [ ] Traversal starts from vault root and respects the 3-layer depth limit
-- [ ] Each layer reads subdirectory READMEs for keyword matching
-- [ ] Candidates are ranked by relevance before presenting to user
-- [ ] User is asked to confirm (or reject) at every proposed match via AskUser
-- [ ] Confirmed topic path is returned immediately upon user confirmation
-- [ ] If no match within 3 layers, a helpful "not found" message is shown
-- [ ] Manual path override is supported when no automatic match is found
 
 ## Helper Tools
 

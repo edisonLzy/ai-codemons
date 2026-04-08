@@ -1,3 +1,20 @@
+---
+name: deepin-topic
+description: Conduct deep, comprehensive research on a specified topic and produce authoritative knowledge-point Markdown files.
+---
+
+# Deep-in Topic
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Deep-in Topic
 
 ## Goal
@@ -32,10 +49,10 @@ flowchart TD
 
 ### Step 1: Locate Target Topic
 
-Invoke the **[Retrieve Topic Node](./retrieval-topic-skill.md)** subskill using the user-specified topic name as the query.
+Invoke the **[Retrieve Topic Node](../retrieve-topic/SKILL.md)** subskill using the user-specified topic name as the query.
 
 - On success: obtain the confirmed topic directory path and read its `README.md` to understand the current scope, existing sub-topics, and what knowledge files already exist.
-- If not found: inform the user and stop. Suggest creating the topic first with the **[Create Topic Skill](./create-topic-skill.md)**.
+- If not found: inform the user and stop. Suggest creating the topic first with the **[Create Topic Skill](../create-topic/SKILL.md)**.
 
 ---
 
@@ -121,7 +138,7 @@ After all draft files are generated, invoke the **`/obsidian-markdown` skill** o
 - 确保 callout 语法正确（`> [!type]`）
 - 优化代码块语言标注、表格对齐、标题层级一致性
 
-知识点文件格式优化参考 **[Optimize Topic Files](./optimize-topic-files-skill.md)** 中的「4. Optimize Content Knowledge-point Files」规范。
+知识点文件格式优化参考 **[Optimize Topic Files](../optimize-topic-files/SKILL.md)** 中的「4. Optimize Content Knowledge-point Files」规范。
 
 ---
 

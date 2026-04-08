@@ -1,3 +1,20 @@
+---
+name: create-topic
+description: Create a new topic (or sub-topic) directory in the Obsidian knowledge tree with README.md and FAQ.md initialization.
+---
+
+# Create Topic
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Create Topic Node
 
 ## Goal
@@ -15,7 +32,7 @@ Create a new topic (or sub-topic) directory in the knowledge tree with basic nod
 
 ### 1. Find Best Placement Directory
 
-Invoke the **[Retrieve Topic Node](./retrieval-topic-skill.md)** subskill to locate the most suitable parent directory in the knowledge tree.
+Invoke the **[Retrieve Topic Node](../retrieve-topic/SKILL.md)** subskill to locate the most suitable parent directory in the knowledge tree.
 
 - Use the new topic's name and definition as the search query.
 - The subskill handles vault traversal (up to 3 layers), keyword matching, candidate ranking, and user confirmation.
@@ -74,7 +91,7 @@ Use `resources/FAQ-template.md` as the template, copy the template content and a
 
 > **⚠️ 约束**：FAQ 中的 callout 块（如 `> [!faq]-`）标题行后必须有空行 `>`，否则无法正确渲染为可折叠块。添加问题时确保每个部分之间有空行分隔。
 
-**This step is REQUIRED.** Follow the complete workflow defined in [Optimize Topic Files Skill Reference](./optimize-topic-files-skill.md).
+**This step is REQUIRED.** Follow the complete workflow defined in [Optimize Topic Files](../optimize-topic-files/SKILL.md).
 
 ### 4. Update Parent Directory README.md
 

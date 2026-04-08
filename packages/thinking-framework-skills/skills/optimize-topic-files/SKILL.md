@@ -1,3 +1,20 @@
+---
+name: optimize-topic-files
+description: Apply Obsidian-flavoured formatting to a topic node's README.md, FAQ.md, and content knowledge-point files using standard templates.
+---
+
+# Optimize Topic Files
+
+## Framework Context
+
+See [Framework Structure](../../references/framework-structure.md) for the canonical Obsidian knowledge tree structure definition.
+
+## Configuration
+
+See [Configuration Check Flow](../../references/config-check-flow.md) before executing this skill.
+
+---
+
 # Subskill: Optimize Topic Files Formatting
 
 ## Goal
@@ -54,4 +71,3 @@ Invoke the `obsidian-markdown` skill for all files, with the corresponding templ
 - [ ] FAQ.md section heading 为 `## Questions`
 - [ ] 知识点文件结构与 `resources/CONTENT-template.md` 一致
 - [ ] 知识点文件 `[!abstract]` 目录锚点与实际章节一致
-

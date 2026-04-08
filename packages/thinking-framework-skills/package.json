@@ -6,8 +6,9 @@
   "author": "MCP Servers Team",
   "type": "module",
   "files": [
-    "SKILL.md",
+    "skills",
     "references",
+    "resources",
     "scripts",
     "store"
   ],
