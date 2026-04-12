@@ -118,22 +118,18 @@ If a topic was found (or newly created):
 
 ### 6. Record in Daily Note
 
-1. Determine today's Daily note path (typically `{vault_path}/Daily/{YYYY-MM-DD}.md`)
-2. Read the Daily note (or create if not exists)
-3. Add an entry recording the operation:
+使用 [Update Daily Note Skill](../daily-note/update-daily-note-skill.md) 往 Records 插入一条记录。
 
-```markdown
-## Knowledge Operations
+需要提供的字段值:
 
-### {timestamp}
+- **记录标题:** 本次操作的简要描述（如"新建：xxx"或"更新：xxx"）
+- **内容:** 记录详细内容，**必须详细完整**，能够完整还原文件变更的内容
+- **来源:** 用户指定的来源（如 "Claude Code 研究"）
+- **Topic:** `[[topic-name/README.md]]`
+- **路径:** `[[文档路径]]`
 
-- **Operation**: Created / Updated
-- **Document**: [[path/to/knowledge-doc]]
-- **Topic**: [[path/to/topic/README.md]]
-- **Summary**: [Brief description of what was added/updated]
-```
-
-If the "Knowledge Operations" section doesn't exist, create it.
+> [!warning] 内容要求
+> `**内容**` 字段必须足够详细和完整，以便在没有文档的情况下也能了解本次文件变更的具体内容是什么。包括但不限于：新增了哪些章节、删除了哪些内容、核心观点是什么、关键结论有哪些。
 
 ### 7. Output Summary
 
@@ -158,7 +154,7 @@ Daily note updated: [daily_note_path]
 - [ ] Merges new content into existing document
 - [ ] Creates new document following CONTENT-template.md structure
 - [ ] Updates topic's README.md with knowledge point index
-- [ ] Records operation in today's Daily note with document address and summary
+- [ ] Records operation in today's Daily note via update-daily-note-skill
 
 ## Helper Tools
 

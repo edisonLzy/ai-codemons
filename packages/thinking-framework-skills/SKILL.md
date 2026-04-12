@@ -221,3 +221,41 @@ Activate this skill when users provide any of these patterns:
 
 ### Instructions
 Follow the complete workflow defined in [Upsert Knowledge Point Skill Reference](references/upsert-knowledge-point-skill.md).
+
+## Daily Note
+
+### Create Daily Note
+
+#### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"create daily note"`
+- `"new daily note"`
+- `"日报"`
+- `"写日报"`
+
+#### Instructions
+Follow the complete workflow defined in [Create Daily Note Skill Reference](references/daily-note/create-daily-note-skill.md).
+
+### Update Daily Note
+
+#### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"update daily note"`
+- `"edit daily note"`
+- `"更新日报"`
+- `"编辑日报"`
+
+#### Instructions
+Follow the complete workflow defined in [Update Daily Note Skill Reference](references/daily-note/update-daily-note-skill.md).
+
+### Complete Daily Note
+
+#### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"complete daily note"`
+- `"finalize daily note"`
+- `"完善日报"`
+- `"完成日报"`
+
+#### Instructions
+Follow the complete workflow defined in [Complete Daily Note Skill Reference](references/daily-note/complete-daily-note-skill.md).
