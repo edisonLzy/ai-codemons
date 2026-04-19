@@ -259,3 +259,16 @@ Activate this skill when users provide any of these patterns:
 
 #### Instructions
 Follow the complete workflow defined in [Complete Daily Note Skill Reference](references/daily-note/complete-daily-note-skill.md).
+
+### Create Weekly Report
+
+#### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"create weekly report"`
+- `"weekly report"`
+- `"周报"`
+- `"写周报"`
+- `"创建周报"`
+
+#### Instructions
+Follow the complete workflow defined in [Create Weekly Report Skill Reference](references/daily-note/create-weekly-report-skill.md).
