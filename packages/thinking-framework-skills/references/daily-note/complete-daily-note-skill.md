@@ -16,7 +16,26 @@
 2. Parse JSON output to extract `today` in YYYY-MM-DD format
 3. 定位今日日报: `vault_path/Daily/<year>/<MM-DD>.md`
 
-### 2. Read Records Section
+### 2. Sync Feishu Records
+
+> **⚠️ 重要**: 在完善日报之前，必须先同步飞书记录到今日日报。
+
+Dispatch a sub-agent to execute the [Sync Feishu Records Skill](sync-feishu-records-skill.md):
+
+**Agent Prompt:**
+```
+请执行 Sync Feishu Records skill，将飞书多维表格的今日记录同步到今日日报。
+
+执行步骤:
+1. 使用 lark-cli base +record-list 获取今日记录（Base Token: WGHcbBFFEaXV9qsZN6ecbCmCnfh, Table ID: tbljmyT87cIlcMBz, View ID: vewrWFYjCc）
+2. 筛选日期为今日的记录
+3. 根据记录内容关联到对应 topic（如 topic 不存在则创建）
+4. 将记录以 callout 格式追加到今日日报的 Records 章节
+
+等待子 agent 完成后再继续后续步骤。
+```
+
+### 3. Read Records Section
 
 从今日日报中提取 Records 章节内容,包括所有 record 条目的:
 - 标题
@@ -24,7 +43,7 @@
 - 来源
 - Topic
 
-### 3. Generate Speech-Text
+### 4. Generate Speech-Text
 
 使用 LLM 将 Records 内容转换为 NotebookLM 风格的 speech-text:
 
@@ -53,7 +72,7 @@ Records 内容:
 请生成 speech-text:
 ```
 
-### 4. Generate Daily Summary
+### 5. Generate Daily Summary
 
 使用 LLM 从 Records 生成今日要点总结:
 
@@ -67,7 +86,7 @@ Records 内容:
 请生成要点总结:
 ```
 
-### 5. Generate TTS Audio
+### 6. Generate TTS Audio
 
 使用 mmx-cli 生成语音音频:
 
@@ -99,14 +118,14 @@ mmx speech synthesize \
 
 将生成的音频文件保存到: `attachments/audio/<MM-DD>.mp3`
 
-### 6. Update Overview Section
+### 7. Update Overview Section
 
 使用 [Update Daily Note Skill](update-daily-note-skill.md) 将 Overview 章节更新为:
 
 - 摘要: 生成的要点总结
 - 音频引用: `![[attachments/audio/<MM-DD>.mp3]]`
 
-### 7. Output Result
+### 8. Output Result
 
 ```
 ✅ 日报已完善: Daily/<year>/<MM-DD>.md

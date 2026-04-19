@@ -272,3 +272,16 @@ Activate this skill when users provide any of these patterns:
 
 #### Instructions
 Follow the complete workflow defined in [Create Weekly Report Skill Reference](references/daily-note/create-weekly-report-skill.md).
+
+### Sync Feishu Records
+
+#### When to Trigger?
+Activate this skill when users provide any of these patterns:
+- `"sync feishu records"`
+- `"sync today's records"`
+- `"同步飞书记录"`
+- `"同步今日记录"`
+- `"fetch feishu daily records"`
+
+#### Instructions
+Follow the complete workflow defined in [Sync Feishu Records Skill Reference](references/daily-note/sync-feishu-records-skill.md).
